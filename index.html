@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+  <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
@@ -26,20 +26,21 @@
       position: absolute;
       color: white;
       font-weight: 500;
-      font-size: 15px;
+      font-size: 14px;
       font-family: 'Roboto', sans-serif;
       white-space: nowrap;
       pointer-events: none;
+      text-shadow: 1px 1px 2px rgba(0,0,0,0.6);
     }
 
-    /* Updated positions based on your screenshot */
+    /* Adjusted for real screenshot layout */
     #nameOverlay {
-      top: 120px;
-      left: 105px;
+      top: 142px;   /* distance from top */
+      left: 108px;  /* distance from left */
     }
 
     #upiOverlay {
-      top: 145px;
+      top: 170px;
       left: 108px;
     }
 
@@ -56,6 +57,11 @@
       color: white;
       border: none;
       border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #005ddd;
     }
   </style>
 </head>
