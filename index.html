@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MobiKwik Screenshot Editor</title>
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background: #f4f4f4;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .editor-container {
+      position: relative;
+      display: inline-block;
+    }
+
+    #screenshot {
+      width: 360px;
+      height: auto;
+    }
+
+    .overlay-text {
+      position: absolute;
+      color: white;
+      font-weight: 500;
+      font-size: 15px;
+      font-family: 'Roboto', sans-serif;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    /* Updated positions based on your screenshot */
+    #nameOverlay {
+      top: 120px;
+      left: 105px;
+    }
+
+    #upiOverlay {
+      top: 145px;
+      left: 108px;
+    }
+
+    input {
+      padding: 8px;
+      margin: 5px;
+      width: 240px;
+    }
+
+    button {
+      padding: 10px 20px;
+      margin-top: 10px;
+      background-color: #0072ff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>MobiKwik Screenshot Editor</h2>
+
+  <input type="file" id="upload" accept="image/*" /><br>
+  <input type="text" id="name" placeholder="Enter new name"><br>
+  <input type="text" id="upi" placeholder="Enter new UPI ID"><br>
+  <button onclick="applyText()">Apply Text</button>
+
+  <div class="editor-container">
+    <img id="screenshot" src="" alt="Screenshot Preview"/>
+    <div class="overlay-text" id="nameOverlay"></div>
+    <div class="overlay-text" id="upiOverlay"></div>
+  </div>
+
+  <script>
+    const upload = document.getElementById('upload');
+    const screenshot = document.getElementById('screenshot');
+
+    upload.addEventListener('change', (event) => {
+      const file = event.target.files[0];
+      if (file) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          screenshot.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+      }
+    });
+
+    function applyText() {
+      const name = document.getElementById('name').value;
+      const upi = document.getElementById('upi').value;
+      document.getElementById('nameOverlay').textContent = name;
+      document.getElementById('upiOverlay').textContent = upi;
+    }
+  </script>
+</body>
+</html>
